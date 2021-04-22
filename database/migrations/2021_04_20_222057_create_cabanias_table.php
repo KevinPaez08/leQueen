@@ -18,7 +18,7 @@ class CreateCabaniasTable extends Migration
             $table->string('nombre', 45);
             $table->string('url')->nullable();
             $table->decimal('precio', 8, 2);
-            $table->string('descripcion', 80);
+            $table->string('descripcion');
             $table->boolean('disponibilidad');
             // $table->unsignedBigInteger('tipoCabania_id');
             // $table->foreign('tipoCabania_id')

@@ -21,18 +21,23 @@ Route::get('/', function () {
 
 Route::get('cabanias', [CabaniaController::class, 'index'])->name('cabanias.index');
 
-Route::get('cabanias/create', [CabaniaController::class, 'create'])->name('cabanias.create');
-
 //Crear Registro
+Route::get('cabanias/create', [CabaniaController::class, 'create'])->name('cabanias.create');
 Route::post('cabanias', [CabaniaController::class, 'store'])->name('cabanias.store');
 
-Route::get('cabanias/{cabania}/edit', [CabaniaController::class, 'edit'])->name('cabanias.edit');
-
 //Actualizar Registro
+Route::get('cabanias/{cabania}/edit', [CabaniaController::class, 'edit'])->name('cabanias.edit');
 Route::put('cabanias/{cabania}', [CabaniaController::class, 'update'])->name('cabanias.update');
 
 //Eliminar Registro
 Route::delete('cabanias/{cabania}', [CabaniaController::class, 'destroy'])->name('cabanias.destroy');
+
+
+
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
