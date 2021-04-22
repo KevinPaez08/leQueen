@@ -8,7 +8,7 @@
 
 @section('content')
     <!--Contenedor de los productos-->
-    <div class="row ">
+    <div class="row mb-3">
         <div class="col-12 col-md-5 col-lg-6 mr-auto">
             <a href="{{ route('users.create') }}" class="btn btn-success">Agregar</a>
         </div>
@@ -17,14 +17,14 @@
 
     <div class="container">
 
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover table-sm">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Edad</th>
-                    <th scope="col">Género</th>
+                    {{-- <th scope="col">Género</th> --}}
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo</th>
                     <th scope="col" colspan="2">Acciones</th>
@@ -37,13 +37,19 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->apellido }}</td>
                         <td>{{ $user->edad }}</td>
-                        <td>{{ $user->genero }}</td>
+                        {{-- <td>{{ $user->genero }}</td> --}}
                         <td>{{ $user->telefono }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><button type="button" class="btn btn-info" data-toggle="modal"><i
-                                    class="fas fa-edit"></i>Edit</button></td>
-                        <td><button type="button" class="btn btn-danger" data-toggle="modal"><i
-                                    class="fas fa-trash-alt"></i>Delete</button></td>
+                        <td><a type="button" class="btn btn-info" href="{{ route('users.edit', $user->id) }}"><i
+                                    class="fas fa-edit"></i>Edit</a></td>
+                        <td>
+                            <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <i class="fas fa-trash-alt"></i>
+                                <input type="submit" class="btn btn-danger" value="Delete" />
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
